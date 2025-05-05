@@ -12,12 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return resposta.json();
         })
         .then(function(json) {
-            avatar.src = json.avatar_url;
-            name.innerText = json.name;
-            username.innerText = json.login;
-            repos.innerText = json.public_repos;
-            followers.innerText = json.followers;
-            following.innerText = json.following;
-            link.href = json.html_url;
+            try {
+                avatar.src = json.avatar_url;
+                name.innerText = json.name;
+                username.innerText = json.login;
+                repos.innerText = json.public_repos;
+                followers.innerText = json.followers;
+                following.innerText = json.following;
+                link.href = json.html_url;
+            } catch (erro) {
+                console.log("Ocorreu um erro:", erro.message);
+            }
         })
 })
